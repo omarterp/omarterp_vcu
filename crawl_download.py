@@ -12,4 +12,8 @@ class Wally(Crawler):
 
 p = Wally(links=['http://www.cnn.com/'], delay=1)
 while not p.done:
-    p.crawl(method=2, cached=False, throttle=1)
+    try:
+        p.crawl(method=2, cached=False, throttle=1)
+        break
+    except Value:
+        print "Encountered error crawling link"
